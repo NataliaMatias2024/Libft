@@ -19,7 +19,7 @@ NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-FILESC = ft_isalpha.c ft_isdigit.c
+FILESC = ft_isalpha.c ft_isdigit.c ft_isalnum.c
 FILESO = $(FILESC:.c=.o)
 
 ################################################################################
