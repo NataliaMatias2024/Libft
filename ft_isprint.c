@@ -19,15 +19,15 @@ int	ft_isprint(int c)
 	return (0);
 }
 
-int main()
-{
-	printf("%d\n", ft_isprint(' '));
-	printf("%d\n", ft_isprint('a'));
-	printf("%d\n", ft_isprint('Z'));
-	printf("%d\n", ft_isprint('0'));
-	printf("%d\n", ft_isprint('9'));
-	printf("%d\n", ft_isprint('*'));
-	printf("%d\n", ft_isprint('{'));
-	printf("%d\n", ft_isprint('\n'));
-	return (0);
-}
+// int main()
+// {
+// 	printf("%d\n", ft_isprint(' '));
+// 	printf("%d\n", ft_isprint('a'));
+// 	printf("%d\n", ft_isprint('Z'));
+// 	printf("%d\n", ft_isprint('0'));
+// 	printf("%d\n", ft_isprint('9'));
+// 	printf("%d\n", ft_isprint('*'));
+// 	printf("%d\n", ft_isprint('{'));
+// 	printf("%d\n", ft_isprint('\n'));
+// 	return (0);
+// }
