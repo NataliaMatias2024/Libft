@@ -12,41 +12,37 @@
 
 #include "libft.h"
 
-char *ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int i;
-	int j;
+	size_t	i;
+	size_t	j;
 
-	if (len == 0)
-		return ((char*)big);
+	if (little[0] == '\0')
+		return (( char*)big);
 	else
 	{
 		i = 0;
 		j = 0;
-		while (little[i] && big[j])
+		while (big[j] && j < len)
 		{
 			i = 0;
-			while (little[i] == big[j])
+			while (little[i] == big[j + i] && j + i < len && big[j + i] != '\0')
 			{
-				if (little[i] == '\0')
-					return ((char*)big + j);
-				j++;
 				i++;
 			}
+			if (little[i] == '\0')
+				return (( char*)big + j);
 			j++;
 		}
 	}
-	return (0);		
+	return (NULL);
 }
 
-// int main()
+// int	main(void)
 // {
-// 	char big[] = "c2 Ecole Sao Paulo"; 
-// 	char little[] = "cole";
-//
-// 	char *result = ft_strnstr(big, little, 5);
-//
-// 	printf("%s\n", result);
-//
+// 	char big[] = "aaxx"; 
+// 	char little[] = "xx";
+// 	size_t len = 6;
+// 	printf("%s\n", (char*)ft_strnstr(big, little, len));
 // 	return (0);
 // }
