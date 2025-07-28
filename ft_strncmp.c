@@ -26,13 +26,15 @@
  			return (s1[i] - s2[i]);
  		i++;
  	}
- 	return (s1[i] - s2[i]); 
+	if (i < n)
+ 		return (s1[i] - s2[i]); 
+	return (0);
  }
 
-int main()
+/*int main()
 {
 	char s1[] = "est";
 	char s2[] = "teste";
 	size_t n = 5;
 	printf("%d\n", ft_strncmp(s1, s2, n));
-}
+}*/
