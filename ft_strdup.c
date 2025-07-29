@@ -31,3 +31,16 @@ char	*ft_strdup(const char *s)
 	dup[i] = '\0';
 	return (dup);
 }
+
+/*int main()
+{
+	const char *s = "Continue a nadar, continua a nadar ...";
+// Criar ponteiro para armazenar o retorno de funções que alocam memória
+// garante que o free libere corretamente. Evitando memory leak
+// (vazamento de memória), que ocorre quando se perde a referência da área alocada.
+
+	char *copy = ft_strdup(s);
+
+	printf("%s\n", copy);
+	free(copy);
+}*/
