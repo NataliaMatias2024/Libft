@@ -41,12 +41,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 // Caso contrário (dest <= src), copiamos normalmente de frente pra trás.
 	else
 	{
-		i = 0;
-		while (i < n)
-		{
-			chardest[i] = temp[i];
-			i++;
-		}
+		ft_memcpy(chardest, temp, n);
 	}
 	return (dest);
 }
