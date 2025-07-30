@@ -35,3 +35,48 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+
+/*int main(void)
+{
+	#include <string.h> // Para comparação com memchr
+	#include <stdlib.h> // Para NULL
+
+	const char str[] = "Hello, world!";
+	const char c1 = 'o';
+	const char c2 = 'z';
+	const char c3 = '\0';
+
+	// Teste 1: caractere presente
+	void *res1 = ft_memchr(str, c1, strlen(str));
+	printf("Teste 1: buscando '%c' em \"%s\"\n", c1, str);
+	if (res1)
+		printf("Encontrado em pos: %ld\n", (char *)res1 - str);
+	else
+		printf("Não encontrado\n");
+
+	// Teste 2: caractere ausente
+	void *res2 = ft_memchr(str, c2, strlen(str));
+	printf("\nTeste 2: buscando '%c' em \"%s\"\n", c2, str);
+	if (res2)
+		printf("Encontrado em pos: %ld\n", (char *)res2 - str);
+	else
+		printf("Não encontrado\n");
+
+	// Teste 3: caractere nulo (terminador)
+	void *res3 = ft_memchr(str, c3, strlen(str) + 1);
+	printf("\nTeste 3: buscando terminador nulo em \"%s\"\n", str);
+	if (res3)
+		printf("Encontrado em pos: %ld\n", (char *)res3 - str);
+	else
+		printf("Não encontrado\n");
+
+	// Teste 4: buscar em zero bytes (deve retornar NULL)
+	void *res4 = ft_memchr(str, c1, 0);
+	printf("\nTeste 4: buscando '%c' com n=0 (deve ser NULL)\n", c1);
+	if (res4)
+		printf("Encontrado em pos: %ld\n", (char *)res4 - str);
+	else
+		printf("Não encontrado (NULL esperado)\n");
+
+	return 0;
+}*/
