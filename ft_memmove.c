@@ -12,7 +12,81 @@
 
 #include "libft.h"
 
-void 	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	;
+	const char	*temp;
+	char		*chardest;
+	size_t		i;
+
+// Se dest e src forem NULL com n > 0, retorna NULL
+// Se n == 0, retorna dest diretamente (nada a copiar)
+	if (dest == NULL && src == NULL && n != 0)
+		return (NULL);
+//Fazemos o cast para (char *) dos ponteiros voids recebidos
+//Isso permite copiar byte a byte
+	chardest = (char *)dest;
+	temp = (const char *)src;
+//AA diferença principal em relação ao memcpy é o suporte a overlap
+//Quando dest > src, a cópia ocorre de trás para frente,
+//evitando qsobrescrever dados da origem antes da leitura
+	if (chardest > temp)
+	{
+		i = n;
+		while (i > 0)
+		{
+			chardest[i - 1] = temp[i - 1];
+			i--;
+		}
+	}
+// Caso contrário (dest <= src), copiamos normalmente de frente pra trás.
+	else
+	{
+		i = 0;
+		while (i < n)
+		{
+			chardest[i] = temp[i];
+			i++;
+		}
+	}
+	return (dest);
 }
+
+// int	main(void)
+// {
+// 	// Só para comparar resultados com memmove original
+// 	#include <string.h> 
+
+// 	char buffer1[20] = "1234567890";
+// 	char buffer2[20] = "1234567890";
+// 	char buffer3[20] = "1234567890";
+// 	char buffer4[20] = "1234567890";
+
+// 	// 1. Copiar bloco normal (sem overlap)
+// 	ft_memmove(buffer1 + 5, buffer1, 5);
+// 	printf("Teste 1 (sem overlap): %s\n", buffer1);
+// 	// Esperado: "1234512345"
+
+// 	// 2. Copiar com overlap (dest < src), cópia crescente
+// 	ft_memmove(buffer2, buffer2 + 2, 5);
+// 	printf("Teste 2 (overlap dest < src): %s\n", buffer2);
+// 	// Esperado: "3456787890"
+
+// 	// 3. Copiar com overlap (dest > src), cópia decrescente
+// 	ft_memmove(buffer3 + 2, buffer3, 5);
+// 	printf("Teste 3 (overlap dest > src): %s\n", buffer3);
+// 	// Esperado: "1212345670"
+
+// 	// 4. dest e src NULL com n != 0 (deve retornar NULL)
+// 	if (ft_memmove(NULL, NULL, 5) == NULL)
+// 		printf("Teste 4 (dest e src NULL, n!=0): passou\n");
+// 	else
+// 		printf("Teste 4 (dest e src NULL, n!=0): falhou\n");
+
+// 	// 5. n == 0, não deve alterar nada
+// 	strcpy(buffer4, "abcdef");
+// 	ft_memmove(buffer4 + 2, buffer4, 0);
+// 	printf("Teste 5 (n == 0): %s\n", buffer4);
+// 	// Esperado: "abcdef"
+
+// 	return 0;
+// }
