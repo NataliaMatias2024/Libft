@@ -1,0 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: namatias <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 14:26:34 by namatias          #+#    #+#             */
+/*   Updated: 2025/07/31 14:26:48 by namatias         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_atoi(const char *nptr)
+{
+	int i;
+	int res;
+	int signal;
+//O ATOI le e trata as informações sempre na mesma ordem, caso algo mude
+// ne ordem padrao a função se encerra e retorna 0
+//A ordem é: analisa espaços, analisa sinais, ignora as letras
+//finalmente converte os char digitos em int digitos.
+	i = 0;
+	res = 0;
+	signal = 1;
+//Verifica espaços e suas variações
+	while (nptr[i] == ' ' || (nptr[i] >= '\t' && nptr[i] <= '\r'))
+		i++;
+//Verifica se existem sinais -
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+			signal = -1;
+		i++;
+	}
+//Verifica se é numero e guarda ele em uma variável res
+	while (nptr[i] >= 48 && nptr[i] <= 57)
+	{
+//Resultado * 10 faz andar uma posição na casa decimal. Como so podemos escrever 0 - 9
+//a multiplicação permite escrevervos 10, 100, 1000, etc.
+//nptr[i] - '0' transforma o valor ascii no numero propriamente dito
+//EX: 9 em ascii é 57 e 0 é 48. -> 57 - 48 = 9. É uma gambiarra matemágica. 		
+		res = (res * 10) + (nptr[i] - '0');
+		i++;
+	}
+//Ao final do looping o res ja terá o int salvo nele e conseguirá realizar operações matemágicas
+//o retorno sempre será o res * signal pois assim se tiver sinal negativo ja retorna o int com o sinal correto 	
+	return (signal * res);
+}
+
+/*int main(void)
+{
+	const char *tests[] = {
+		"12345",
+		"   987",
+		"-42",
+		"+17",
+		"  -00123abc",
+		"++123",      // comportamento indefinido, mas vamos ver
+		"--456",      // idem
+		"  + 789",    // espaço após sinal, deve retornar 0
+		"abc123",     // começa com letras, deve retornar 0
+		"2147483647", // maior int positivo (32 bits)
+		"-2147483648",// menor int negativo (32 bits)
+		NULL
+	};
+
+	for (int i = 0; tests[i] != NULL; i++)
+	{
+		printf("ft_atoi(\"%s\") = %d\n", tests[i], ft_atoi(tests[i]));
+	}
+
+	return 0;
+}*/
