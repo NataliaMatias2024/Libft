@@ -14,7 +14,11 @@
 
 int	ft_tolower(int c)
 {
+//Igual a if (c >= 'A' && c <= 'Z')
 	if (c >= 65 && c <= 90)
+//a diferença de uma letra maiuscula para a mesma letra minuscula é sempre + 32
+//por isso se A for 65, a será 65 + 32 = 97. Essa regra vale para todas as letras
+// de A a Z.
 		return (c + 32);
 	return (c);
 }

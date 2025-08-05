@@ -27,7 +27,8 @@ int	ft_atoi(const char *nptr)
 //Verifica espaços e suas variações
 	while (nptr[i] == ' ' || (nptr[i] >= '\t' && nptr[i] <= '\r'))
 		i++;
-//Verifica se existem sinais -
+//Verifica se existem sinais -, e irá ler apenas 1 sinal. Se existirem mais causará o encerramento
+//do programa. por isso utilizamos um IF ao inves de WHILE
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i] == '-')

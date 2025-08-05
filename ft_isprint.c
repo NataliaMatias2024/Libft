@@ -19,6 +19,7 @@ int	ft_isprint(int c)
 	return (0);
 }
 
+
 // int main()
 // {
 // 	printf("%d\n", ft_isprint(' '));
