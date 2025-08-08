@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:26:34 by namatias          #+#    #+#             */
-/*   Updated: 2025/07/31 14:26:48 by namatias         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:30:00 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,25 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	res = 0;
 	signal = 1;
-//Verifica espaços e suas variações
+//Verifica "espaços", ignorando todos até achar o primeiro sinal/numero
 	while (nptr[i] == ' ' || (nptr[i] >= '\t' && nptr[i] <= '\r'))
 		i++;
-//Verifica se existem sinais -, e irá ler apenas 1 sinal. Se existirem mais causará o encerramento
-//do programa. por isso utilizamos um IF ao inves de WHILE
+//Verifica se existe APENAS UM sinal e se ele é negativo ou positivos
+//Se existirem mais de um sinal causará o encerramento do programa. 
+//Por isso utilizamos um IF ao inves de WHILE
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i] == '-')
 			signal = -1;
 		i++;
 	}
-//Verifica se é numero e guarda ele em uma variável res
+//Verifica se é um digito entre 0 e 9 e guarda ele em uma variável res
 	while (nptr[i] >= 48 && nptr[i] <= 57)
 	{
-//Resultado * 10 faz andar uma posição na casa decimal. Como so podemos escrever 0 - 9
-//a multiplicação permite escrevervos 10, 100, 1000, etc.
-//nptr[i] - '0' transforma o valor ascii no numero propriamente dito
+//Resultado * 10 faz andar uma posição na casa decimal. Como só conseguimos 
+//escrever um unico caracter por vez a multiplicação permite andar as casas.
+//Já nptr[i] - '0' transforma o valor ascii no numero propriamente dito, isso pq
+// 0 = 48 em ascii, e a diferença dele pra qualquer outro numero é o proprio numero.
 //EX: 9 em ascii é 57 e 0 é 48. -> 57 - 48 = 9. É uma gambiarra matemágica. 		
 		res = (res * 10) + (nptr[i] - '0');
 		i++;
