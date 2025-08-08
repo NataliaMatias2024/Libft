@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:43:59 by namatias          #+#    #+#             */
-/*   Updated: 2025/08/01 18:43:06 by namatias         ###   ########.fr       */
+/*   Updated: 2025/08/08 19:22:14 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 //O segundo looping copia a informação do s2 , partindo da posição inicial (i=0)
 //porem str inicia da ultima posição do looping anterior por isso n zeramos j.
 	i = 0;
-	if(s2)
+	if (s2)
 		while (s2[i])
 			str[j++] = s2[i++];
 //Ao final da concatenação temos que acrescentar o valor \0, 

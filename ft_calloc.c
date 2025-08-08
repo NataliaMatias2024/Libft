@@ -3,40 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 17:23:07 by namatias          #+#    #+#             */
-/*   Updated: 2025/07/29 17:23:11 by namatias         ###   ########.fr       */
+/*   Updated: 2025/08/08 17:41:23 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	i;
-	size_t	total;
+	size_t			total;
 	unsigned char	*ptr;
 
-//Tratamento para parametros zerados e calculo de total size
+//Tratamento para parametros zerados,deve retornar um ponteiro nao nulo
+//assim garante que o free() nao de erro.
 	if (nmemb == 0 || size == 0)
 		return (ptr = malloc(0));
+//Total sera o tamanho todal da informação que queremos alocar
 	total = nmemb * size;
-//TRatamento contra overflow
+//Tratamento contra overflow, nesse caso nao iremos impedir que ele ocorra
+//mas iremos identificar e encerrar o programa. Evitando sua propagação.
 	if (total / size > nmemb)
 		return (NULL);
-//Alocamento de memoria em sí, usando malloc. 
+//Alocamento de memoria em sí, usando malloc.
 	ptr = malloc (total);
 	if (!ptr)
 		return (NULL);
-//Diferencial malloc vs. calloc é zerar os espaços alocados
-	i = 0;
-	while (i < total)
-	{
-		ptr[i] = 0;
-		i++;
-	}
+//Diferencial malloc vs. calloc é zerar os espaços alocados, ou seja,
+//precisamos zerar todo o *ptr, que é basicamente a função bzero!
+	ft_bzero(ptr, total);
 	return (ptr);
 }
 

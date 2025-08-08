@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 19:04:35 by namatias          #+#    #+#             */
-/*   Updated: 2025/07/29 19:04:48 by namatias         ###   ########.fr       */
+/*   Updated: 2025/08/08 19:27:20 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,33 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	const char	*temp;
-	char		*chardest;
-	size_t		i;
+	size_t					i;
+	unsigned char			*chardest;
+	const unsigned char		*charsrc;
 
 // Se dest e src forem NULL com n > 0, retorna NULL
 // Se n == 0, retorna dest diretamente (nada a copiar)
-	if (dest == NULL && src == NULL && n != 0)
+	if (dest == NULL && src == NULL)
 		return (NULL);
 //Fazemos o cast para (char *) dos ponteiros voids recebidos
 //Isso permite copiar byte a byte
-	chardest = (char *)dest;
-	temp = (const char *)src;
+	chardest = (unsigned char *)dest;
+	charsrc = (const unsigned char *)src;
 //AA diferença principal em relação ao memcpy é o suporte a overlap
 //Quando dest > src, a cópia ocorre de trás para frente,
 //evitando qsobrescrever dados da origem antes da leitura
-	if (chardest > temp)
+	if (chardest > charsrc)
 	{
 		i = n;
 		while (i > 0)
 		{
-			chardest[i - 1] = temp[i - 1];
+			chardest[i - 1] = charsrc[i - 1];
 			i--;
 		}
 	}
 // Caso contrário (dest <= src), copiamos normalmente de frente pra trás.
 	else
-	{
 		ft_memcpy(chardest, temp, n);
-	}
 	return (dest);
 }
 

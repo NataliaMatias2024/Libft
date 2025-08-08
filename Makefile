@@ -6,7 +6,7 @@
 #    By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 19:25:38 by namatias          #+#    #+#              #
-#    Updated: 2025/08/01 19:11:46 by namatias         ###   ########.fr        #
+#    Updated: 2025/08/08 17:39:45 by namatias         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME = libft.a
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 FILESC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
@@ -25,7 +25,7 @@ FILESC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		 ft_calloc.c ft_bzero.c ft_memset.c ft_memcpy.c ft_memmove.c \
 		 ft_memchr.c ft_memcmp.c ft_atoi.c ft_substr.c ft_strtrim.c \
 		 ft_split.c ft_itoa.c ft_strmapi.c ft_putchar_fd.c ft_putendl_fd.c \
-		 ft_putnbr_fd.c ft_putstr_fd.c
+		 ft_putnbr_fd.c ft_putstr_fd.c ft_striteri.c ft_strjoin.c
 
 FILESO = $(FILESC:.c=.o)
 

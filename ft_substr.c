@@ -6,7 +6,7 @@
 /*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 18:49:11 by namatias          #+#    #+#             */
-/*   Updated: 2025/08/01 16:35:54 by namatias         ###   ########.fr       */
+/*   Updated: 2025/08/08 18:00:58 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,30 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 //len será o tamanho da substring[start], o tamanho total de s precisa ser calculado
-	size_t	len_s;
+
 	size_t	i;
+	size_t	len_s;
 	char	*ptr;
 
-//lenght_s irá fornecer o tamanho total do nosso ponteiro s recebido, permitinfo
+//len_s irá guardar o tamanho total do nosso *s recebido, permitindo usa-lo para
 //fazer criterios de parada e condicionais d forma a n pegar lixo d memoria ou pos invalida	
-	len_s = 0;
-	while (s[len_s])
-		len_s++;
-//Caso s seja nulo nao iremos retornar nada
-//O mesmo ocorre para casos onde o indice start for maior q o tamanho maximo de s	
+	len_s = ft_strlen(s);
+	
+//Caso s seja nulo nao iremos retornar nada, assim como para casos onde o 
+//indice start for maior q o tamanho maximo de s.
+//Ainda teriamos que fazer um malloc para esses casos especificos, por isso
+//o uso da função ft_strdup facilia a vida, pois dentro deja já te o malloc
 	if (s == NULL || start >= len_s)
 		return (ft_strdup(""));
+
 //Start nos diz onde a nova string começa (s[start])
-//len nos diz ate onde a nova string vai s[pos max final] = len
-//lenght_s diz qual a pos max final o S pode assumir
+//len nos diz ate onde a nova string vai (s[pos max final])
 	i = 0;
 	while (i < len && s[start + i] != '\0')
 		i++;
-//Agora temos o tamanho total que a nova string (ptr) terá quando for copiada do valor do byte s[start]
-//e indo ate a posição s[len]. Por iss conseguimos alocar o tamanho certo
+
+//Agora temos o tamanho total que a nova string (ptr) terá 
+//inda de s[start] até s[len].
 	ptr = malloc ((i + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);

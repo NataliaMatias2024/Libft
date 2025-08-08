@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 10:25:22 by namatias          #+#    #+#             */
-/*   Updated: 2025/08/03 10:25:22 by namatias         ###   ########.fr       */
+/*   Updated: 2025/08/08 19:24:58 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c)
+static int	ft_count_words(char const *s, char c)
 {
 	int	words;
 	int	i;
@@ -28,9 +28,9 @@ static int	count_words(char const *s, char c)
 	return (words);
 }
 
-static int	lenght_words(char const *s, char c)
+static int	ft_lenght_words(char const *s, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i] && s[i] != c)
@@ -51,26 +51,24 @@ static char	**ft_free(char **ptr, int p)
 
 char	**ft_split(char const *s, char c)
 {
-    char **ptr;
-	unsigned int	pos_s;
-	int	pos_ptr;
+	size_t	pos_s;
+	int		pos_ptr;
+	char	**ptr;
 
-	ptr = malloc ((count_words(s, c) + 1) * sizeof(char *));
-	if (!s || !ptr)
+	ptr = malloc ((ft_count_words(s, c) + 1) * sizeof(char *));
+	if (!ptr || !s)
 		return (NULL);
 	pos_s = 0;
 	pos_ptr = 0;
 	while (s[pos_s])
 	{
-		while (s[pos_s] == c)
-			pos_s++;
-		if (s[pos_s] != c && s[pos_s] != '\0')
+		if (s[pos_s] != c)
 		{
-			ptr[pos_ptr] = ft_substr(s, pos_s, lenght_words(&s[pos_s], c));
+			ptr[pos_ptr] = ft_substr(s, pos_s, ft_lenght_words(&s[pos_s], c));
 			if (!ptr[pos_ptr])
-				return ft_free(ptr, pos_ptr);
+				return (ft_free(ptr, pos_ptr));
 			pos_ptr++;
-			pos_s = pos_s + lenght_words(&s[pos_s], c);
+			pos_s = pos_s + ft_lenght_words(&s[pos_s], c);
 		}
 		else
 			pos_s++;

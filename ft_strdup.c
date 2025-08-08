@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 17:23:46 by namatias          #+#    #+#             */
-/*   Updated: 2025/07/29 17:23:49 by namatias         ###   ########.fr       */
+/*   Updated: 2025/08/08 19:24:17 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,17 @@
 
 char	*ft_strdup(const char *s)
 {
-	int		size;
 	int		i;
 	char	*dup;
 
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	// +1 para o espaço '\0'
-	size = i + 1;
-
-	//usamos o looping para pegar o tamanho string q precisamos
-	//alocar com o malloc (SEMPRE USAMOS O FREE NA MAIN)
-	dup = malloc (size * sizeof(const char));
+	i = ft_strlen(s);
+//usamos o looping para pegar o tamanho string q precisamos
+//alocar com o malloc (SEMPRE USAMOS O FREE NA MAIN)
+	dup = malloc ((i + 1) * sizeof(const char));
 	if (!dup)
 		return (NULL);
 
-	//Esse looping é para realizar a copia/duplicata da string recebida
+//Esse looping é para realizar a copia/duplicata da string recebida
 	i = 0;
 	while (s[i])
 	{

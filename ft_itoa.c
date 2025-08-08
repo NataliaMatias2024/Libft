@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <namatias@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 13:25:28 by namatias          #+#    #+#             */
-/*   Updated: 2025/08/03 13:25:28 by namatias         ###   ########.fr       */
+/*   Updated: 2025/08/08 19:29:04 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_count_size(int n)	
+static size_t	ft_count_size(int n)
 {
 	size_t	size;
-	long 	number;
+	long	number;
 
 	number = n;
 	size = 0;
@@ -28,23 +28,33 @@ static size_t	ft_count_size(int n)
 	}
 	while (number > 0)
 	{
-		number = number/10;
+		number = number / 10;
 		size++;
 	}
 	return (size);
 }
 
+static char	*ft_convert(size_t i, long number, char *ptr)
+{
+	ptr[i] = '\0';
+	while (number > 0)
+	{
+		--i;
+		ptr[i] = (number % 10) + '0';
+		number = number / 10;
+	}
+	return (ptr);
+}
+
 char	*ft_itoa(int n)
 {
-	char 	    *ptr;
-	long 	    number;
-	size_t		size;
+	char		*ptr;
+	long		number;
 
-	size = ft_count_size(n);
-	ptr = malloc ((size + 1 ) * sizeof(char));
+	ptr = malloc ((ft_count_size(n) + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);
-	number = n;	
+	number = n;
 	if (number == 0)
 	{
 		ptr[0] = '0';
@@ -56,14 +66,7 @@ char	*ft_itoa(int n)
 		ptr[0] = '-';
 		number = number * -1;
 	}
-	ptr[size] = '\0';
-	while (number > 0)
-	{
-		--size;
-		ptr[size] = (number % 10) + '0';
-		number = number/10;
-	}
-	return (ptr);
+	return (ft_convert(ft_count_size(n), number, ptr));
 }
 
 // // --- FUNÇÃO AUXILIAR PARA EXECUTAR OS TESTES ---
