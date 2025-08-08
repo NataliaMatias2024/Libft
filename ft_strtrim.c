@@ -6,44 +6,45 @@
 /*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 19:10:19 by namatias          #+#    #+#             */
-/*   Updated: 2025/08/01 20:31:13 by namatias         ###   ########.fr       */
+/*   Updated: 2025/08/08 18:54:58 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *s);
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char *strtrim;
 	int i;
 	int f;
+	char *strtrim;
 
-	//verificar se s1 e set existem
-	//caso s1 n exista retorna NULL
+//Verificar se s1 existe, caso s1 n exista retorna NULL
 	if (!s1)
 		return (NULL);
-	//caso set n exista retorna s1
+
+//Caso set n exista retorna o proprio s1
 	if (!set)
 		return (ft_strdup(s1));
 
 	i = 0;
-	//Verificar se set existe em s1
+//Verificar se set existe em s1
+//inicio pro fim para no primeiro carcter diferente
 	while (s1[i] && ft_strchr((char *)set, s1[i]))
-		//inicio pro fim para no primeiro carcter diferente
 		i++;
-	//fim pro inicio para no primeiro caracter diferente
+
+//fim pro inicio para no primeiro caracter diferente
 	f = ft_strlen(s1) - 1;
 	while (f > i && ft_strchr((char *)set, s1[f]))
 		f--;
-	//se set = s1 retorna uma string vazia e alocada malloc (strdup(""))
+
+//se set = s1 retorna uma string vazia e alocada malloc (strdup(""))
 	if (i > f)
 		return (ft_strdup(""));
-	//retorna uma sub string iniciada na primeira diferença inicio -> fim
-	//e finalizada na primeira diferença fim -> inicio
-	strtrim = ft_substr(s1, i, (f-i+1));
-	return(strtrim);
+
+//retorna uma sub string iniciada na primeira diferença inicio -> fim
+//e finalizada na primeira diferença fim -> inicio
+	strtrim = ft_substr(s1, i, (f - i + 1));
+	return (strtrim);
 }
 
 /*int	main(void)
