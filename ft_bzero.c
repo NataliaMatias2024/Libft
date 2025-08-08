@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namatias <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: namatias <namatias@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:31:13 by namatias          #+#    #+#             */
-/*   Updated: 2025/07/29 18:31:16 by namatias         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:44:20 by namatias         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	ft_bzero(void *s, size_t n)
 	size_t	i;
 	unsigned char	*ptr;
 
-//Fazer o cast (atribuir void *s para um unsigned char *)
-//permite acessar byte a byte do array
+//O cast (atribuir void *s para um unsigned char *), permite acessar byte a byte
 	ptr = (unsigned char *)s;
 //O numero maximo de bytes que iremos zerar é n 
 //por isso ele será nosso criterio de parada.
