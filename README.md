@@ -80,12 +80,12 @@ Deleta arquivos .o e o executável .a
 ### 4. Utilizando a Libft em seus projetos
 
 Para usar essas funções e as que forem sendo adicionadas no futuro, inclua o header da lib no seu projeto dessa forma:
-```
+```c
 #include "libft.h"
 ```
 
 E compile executando o MakeFile da biblioteca (libft)
-```
+```c
  cc main.c -L. -lft -Wall -Wextra -Werror -o seu_programa
 ```
 
