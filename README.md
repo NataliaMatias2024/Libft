@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Libft" width="20%" height="20%" src="https://github.com/joaolive/joaolive/blob/3ccf0ce9fdd2128ba8ef72276dde6506a5bb2ce3/badges/libft_b.png" />
+  <img alt="Libft" width="20%" height="20%" src="https://raw.githubusercontent.com/NataliaMatias2024/42-project-badges/main/badges/libfte.png" />
 </h1>
 
 # 📚 Libft - @42SP
@@ -26,7 +26,6 @@ Este repositório contém a implementação da **Libft**, o primeiro projeto do 
 > - **Listas Encadeadas:** Implementação e manipulação de estruturas dinâmicas de dados.
 > - **Static Library:** Criação de um arquivo `.a` para reutilização de código.
 
-<!--
 ## 🛠️ Funcionalidades
 
 A `libft` inclui implementações personalizadas de diversas funções, divididas nas seguintes categorias:
@@ -44,7 +43,6 @@ A `libft` inclui implementações personalizadas de diversas funções, dividida
 ### Bônus - Listas encadeadas
 - `ft_lstnew`, `ft_lstadd_front`, `ft_lstsize`, `ft_lstlast`
 - `ft_lstadd_back`, `ft_lstdelone`, `ft_lstclear`, `ft_lstiter`, `ft_lstmap`
--->
 
 ## 📁 Estrutura do Projeto
 
@@ -61,41 +59,44 @@ A `libft` inclui implementações personalizadas de diversas funções, dividida
 ### 1. Clone o repositório
 
 ```bash
-$ git clone [https://github.com/NataliaMatias2024/libft.git](https://github.com/NataliaMatias2024/libft.git)
+ git clone https://github.com/NataliaMatias2024/Libft.git
 ```
-### 2. Para compilar vá na pasta do projeto e de make
+### 2. Para compilar, acesse a pasta do projeto e execute o comando make
 
 ```bash
-$ make
+ make
 ```
 ### 3. Para limpar todos os arquivos binários (.o) e o executável gerado (.a)
 
 Deleta arquivos .o
 ```
-$ make clean
+ make clean
 ```
 Deleta arquivos .o e o executável .a
 ```
-$ make fclean
+ make fclean
 ```
 
-### 4. Usando a libft no seus códigos
+### 4. Utilizando a Libft em seus projetos
 
-Para usar essas funções e as que forem sendo adicionados no futuro, inclua o header da lib no seu projeto dessa forma:
+Para usar essas funções e as que forem sendo adicionadas no futuro, inclua o header da lib no seu projeto dessa forma:
 ```
 #include "libft.h"
 ```
 
 E compile executando o MakeFile da biblioteca (libft)
 ```
-$ gcc main.c -L. -lft -o seu_programa
+ cc main.c -L. -lft -Wall -Wextra -Werror -o seu_programa
 ```
 
-## 🧠 Para Novos Cadets
-Algumas dicas para o início:
+## 🧠 Lições Aprendidas e Dicas
+Algumas dicas para quem está iniciando agora:
 
-- Entenda o Makefile: Usaremos ele para praticamente todo o Common Core, tendo que fazer pequenos ajustes de acordo com o projeto. Entender ele agora irá poupar tempo nos próximos projetos, embora a gente sempre bata um pouco a cabeça pra conseguir ajustar todos os detalhes XD (Obs: Tente entender o que são as variáveis automáticas ($@, $<) e as flags que usamos para compilar (CFLAGS)).
+**Automação com Makefile:** O Makefile será seu melhor amigo em todo o Common Core. Entender o seu funcionamento e possibilidades agora poupará muito esforço em projetos complexos como o **Minishell** e o **Philosophers**. Embora a gente sempre "bata a cabeça" um pouco para ajustar os detalhes XD. Foque em tentar entender:
+  - O funcionamento das variáveis automáticas (`$@`, `$<`)
+  - A importância das flags de compilação (`CFLAGS`)
+  - Como organizar a compilação de arquivos .c em subpastas (isso ajudará muito na organização de projetos complexos, que aqui ficou faltando rs).
 
-- Ponteiros para Ponteiros: Entender a diferença entre o endereço do ponteiro e o conteúdo para o qual ele aponta é a chave para não dar Segfault.
+**Gestão de Ponteiros:** A chave para evitar o Segmentation Fault é entender a diferença entre o endereço do ponteiro e o conteúdo apontado.
 
-- Não esqueçam de usar man NOME_DA_FUNÇÃO para entender o que precisa ser desenvolvido, as vezes a dificuldade está em interpretar corretamente o comportamento da função e não a execução em si. 
+**RTFM (Read The F Manual):** O comando `man` é seu melhor amigo. As vezes o maior desafio é entender o que precisa ser desenvolvido, por isso descobrir o comportamento da libc original é 50% do desafio.
